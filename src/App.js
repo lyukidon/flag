@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Box from './Box';
+import InGame from './InGame';
+
+let click = 0;
+
+// document.getElementsByClassName('button').addEventListener('click',function(){
+//   return click++;
+// })
+
+const startButton = () => {
+  if (click%2 === 0){
+    document.getElementsByClassName('page').innerHTML = '<Box/>'
+  }else{
+    document.getElementsByClassName('page').innerHTML = '<InGame/>'
+  }
+}
+startButton();
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='page'>
+      <Box/>
+      <InGame/>
     </div>
   );
 }
