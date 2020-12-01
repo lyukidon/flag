@@ -1,28 +1,17 @@
 import React from 'react';
-import Box from './Box';
-import InGame from './InGame';
+import InGame from './comp/InGame';
+import picture from './flag/South_Korea.svg';
 
-let click = 0;
-
-// document.getElementsByClassName('button').addEventListener('click',function(){
-//   return click++;
-// })
-
-const startButton = () => {
-  if (click%2 === 0){
-    document.getElementsByClassName('page').innerHTML = '<Box/>'
-  }else{
-    document.getElementsByClassName('page').innerHTML = '<InGame/>'
-  }
+const obj = {
+  img: picture,
+  country: '대한민국'
 }
-startButton();
 
 function App() {
   return (
-    <div className='page'>
-      <Box/>
-      <InGame/>
-    </div>
+    <header>
+      <InGame flag={obj.img} country={obj.country}/>
+    </header>
   );
 }
 
