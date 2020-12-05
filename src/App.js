@@ -1,17 +1,34 @@
 import React from 'react';
-import InGame from './comp/InGame';
-import picture from './flag/South_Korea.svg';
+import { createGlobalStyle } from 'styled-components';
+import GameTemplate from './comp/GameTemplate';
 
-const obj = {
-  img: picture,
-  country: '대한민국'
-}
+// let click = 0;
+
+// document.getElementsByClassName('button').addEventListener('click',function(){
+//   return click++;
+// })
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    background: aliceblue;
+  }
+`;
+
+// const startButton = () => {
+//   if (click%2 === 0){
+//     document.getElementsByClassName('page').innerHTML = '<Box/>'
+//   }else{
+//     document.getElementsByClassName('page').innerHTML = '<InGame/>'
+//   }
+// }
+// startButton();
 
 function App() {
   return (
-    <header>
-      <InGame flag={obj.img} country={obj.country}/>
-    </header>
+    <>
+      <GlobalStyle />
+      <GameTemplate />
+    </>
   );
 }
 
