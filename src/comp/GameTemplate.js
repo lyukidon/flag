@@ -17,19 +17,16 @@ const GameTemplateBlock = styled.div`
     text-align: center;
 `;
 
-console.log(CountryCodes);
-
-const RandomCountryCode = CountryCodes[Math.floor(Math.random() * 248)].Code.toLowerCase();
-
-console.log(RandomCountryCode)
+const RandomCountryCode = CountryCodes[Math.floor(Math.random() * 248)]
+// .Code.toLowerCase();
 
 function GameTemplate() {
     return (
         <>
             <GameTemplateBlock>
                 <Header />
-                <FlagTemplate countryCode={RandomCountryCode} />
-                <UserChoiceTemplate></UserChoiceTemplate>
+                <FlagTemplate countryCode={RandomCountryCode.Code.toLowerCase()} />
+                <UserChoiceTemplate answer = {RandomCountryCode.Name}></UserChoiceTemplate>
             </GameTemplateBlock> 
         </>
     );

@@ -5,7 +5,7 @@ export const CountryCodes = [
     },
     {
        "Code":"AX",
-       "Name":"\u00c5land Islands"
+       "Name":"Aland Islands"
     },
     {
        "Code":"AL",

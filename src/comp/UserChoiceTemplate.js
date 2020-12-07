@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { CountryCodes } from '../data/CountryCodes';
 
 const UserChoiceTemplateBlock = styled.div`
     margin: 0 auto;
@@ -13,13 +14,14 @@ const UserChoiceTemplateBlock = styled.div`
     }
 `;
 
-function UserChoiceTemplate() {
+function UserChoiceTemplate({answer}) {
     return (
         <>
-            <UserChoiceTemplateBlock>Korea</UserChoiceTemplateBlock>
-            <UserChoiceTemplateBlock>Canada</UserChoiceTemplateBlock>
-            <UserChoiceTemplateBlock>Japan</UserChoiceTemplateBlock>
-            <UserChoiceTemplateBlock>China</UserChoiceTemplateBlock>
+            <UserChoiceTemplateBlock>{CountryCodes[Math.floor(Math.random() * 248)].Name}</UserChoiceTemplateBlock>
+            <UserChoiceTemplateBlock>{answer}</UserChoiceTemplateBlock>
+            <UserChoiceTemplateBlock>{CountryCodes[Math.floor(Math.random() * 248)].Name}</UserChoiceTemplateBlock>
+            <UserChoiceTemplateBlock>{CountryCodes[Math.floor(Math.random() * 248)].Name}</UserChoiceTemplateBlock>
+            <UserChoiceTemplateBlock>{CountryCodes[Math.floor(Math.random() * 248)].Name}</UserChoiceTemplateBlock>
         </>
     );
 }
