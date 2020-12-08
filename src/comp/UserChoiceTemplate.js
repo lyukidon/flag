@@ -15,14 +15,24 @@ const UserChoiceTemplateBlock = styled.div`
 `;
 
 function UserChoiceTemplate({answer}) {
+    let arr=[answer];
+    for (let i=0;i<3;i++){
+        arr.push(CountryCodes[Math.floor(Math.random() * 248)].Name);
+    }
+    console.log(arr)
+    arr.sort();
+    console.log(arr);
     return (
-        <>
-            <UserChoiceTemplateBlock>{CountryCodes[Math.floor(Math.random() * 248)].Name}</UserChoiceTemplateBlock>
-            <UserChoiceTemplateBlock>{answer}</UserChoiceTemplateBlock>
-            <UserChoiceTemplateBlock>{CountryCodes[Math.floor(Math.random() * 248)].Name}</UserChoiceTemplateBlock>
-            <UserChoiceTemplateBlock>{CountryCodes[Math.floor(Math.random() * 248)].Name}</UserChoiceTemplateBlock>
-            <UserChoiceTemplateBlock>{CountryCodes[Math.floor(Math.random() * 248)].Name}</UserChoiceTemplateBlock>
-        </>
+        <div>
+            {
+                arr.map(
+                    country =>
+                        <UserChoiceTemplateBlock>
+                            {country}
+                        </UserChoiceTemplateBlock>
+                )
+            }
+        </div>
     );
 }
 
