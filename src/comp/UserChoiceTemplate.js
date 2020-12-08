@@ -20,7 +20,7 @@ function UserChoiceTemplate({answer}) {
         arr.push(CountryCodes[Math.floor(Math.random() * 248)].Name);
     }
     console.log(arr)
-    arr.sort();
+    arr.sort((a,b)=>a.charCodeAt(1)-b.charCodeAt(0));
     console.log(arr);
     return (
         <div>
