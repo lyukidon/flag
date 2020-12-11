@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import {headerPoint} from '../data/headerPoint';
 
 const HeaderTemplateBlock = styled.div`
     display: flex;
@@ -15,7 +16,7 @@ class Header extends Component {
                 <HeaderTemplateBlock>
                     <span>시간: </span>
                     <span>나라 국기 맞추기</span>
-                    <span>점수: </span>
+                    <span>점수: {headerPoint['점수']} </span>
                 </HeaderTemplateBlock>
             </>
         );

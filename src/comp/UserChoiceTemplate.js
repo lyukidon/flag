@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { CountryCodes } from '../data/CountryCodes';
+import {headerPoint} from '../data/headerPoint';
 
 
 const UserChoiceTemplateBlock = styled.div`
@@ -15,14 +16,6 @@ const UserChoiceTemplateBlock = styled.div`
     }
 `;
 
-// function checkUserChoice({answer}){
-//     if ( === answer){
-//         alert('true')
-//     }else{
-//         alert('false')
-//     }
-// }
-
 function UserChoiceTemplate({answer}) {
     let arr=[answer];
     for (let i=0;i<3;i++){
@@ -32,7 +25,9 @@ function UserChoiceTemplate({answer}) {
 
     const checkUserChoice = (countryName) => {
         if (countryName === answer){
-            alert("true")
+            alert("true");
+            headerPoint['점수']++;
+            console.log(headerPoint['점수'])
         }else{
             alert("false")
         }
