@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { CountryCodes } from '../data/CountryCodes';
+
 
 const UserChoiceTemplateBlock = styled.div`
     margin: 0 auto;
@@ -13,14 +15,40 @@ const UserChoiceTemplateBlock = styled.div`
     }
 `;
 
-function UserChoiceTemplate() {
+// function checkUserChoice({answer}){
+//     if ( === answer){
+//         alert('true')
+//     }else{
+//         alert('false')
+//     }
+// }
+
+function UserChoiceTemplate({answer}) {
+    let arr=[answer];
+    for (let i=0;i<3;i++){
+        arr.push(CountryCodes[Math.floor(Math.random() * 248)].Name);
+    }
+    arr.sort((a,b)=>a[1].localeCompare(b[1]));
+
+    const checkUserChoice = (countryName) => {
+        if (countryName === answer){
+            alert("true")
+        }else{
+            alert("false")
+        }
+    }
+
     return (
-        <>
-            <UserChoiceTemplateBlock>Korea</UserChoiceTemplateBlock>
-            <UserChoiceTemplateBlock>Canada</UserChoiceTemplateBlock>
-            <UserChoiceTemplateBlock>Japan</UserChoiceTemplateBlock>
-            <UserChoiceTemplateBlock>China</UserChoiceTemplateBlock>
-        </>
+        <div>
+            {
+                arr.map(
+                    country =>
+                        <UserChoiceTemplateBlock className = 'example' key = {country} onClick={(e) => checkUserChoice(country)}>
+                            {country}
+                        </UserChoiceTemplateBlock>
+                )
+            }
+        </div>
     );
 }
 
