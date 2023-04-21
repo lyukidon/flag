@@ -10,12 +10,14 @@ const HeaderTemplateBlock = styled.div`
 
 class Header extends Component {
     render() {
+        const {point} = this.props;
+        
         return (
             <>
                 <HeaderTemplateBlock>
                     <span>시간: </span>
                     <span>나라 국기 맞추기</span>
-                    <span>점수: </span>
+                    <span>점수: {point}</span>
                 </HeaderTemplateBlock>
             </>
         );
