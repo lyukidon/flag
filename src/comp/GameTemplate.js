@@ -31,7 +31,7 @@ function GameTemplate() {
         setRandomCountryCode(CountryCodes[Math.floor(Math.random() * 248)]);
     }, [point]);
 
-    const [time, setTime] = useState(3);
+    const [time, setTime] = useState(60);
 
     useEffect(() => {
         if (time > 0) {
