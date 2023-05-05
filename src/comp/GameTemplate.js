@@ -4,6 +4,7 @@ import Header from "./Header";
 import FlagTemplate from "./FlagTemplate";
 import UserChoiceTemplate from "./UserChoiceTemplate";
 import { CountryCodes } from "../data/CountryCodes";
+import GameResult from "../pages/GameResult";
 
 const GameTemplateBlock = styled.div`
     margin: 0 auto;
@@ -19,6 +20,7 @@ const GameTemplateBlock = styled.div`
 
 function GameTemplate() {
     const [point, setPoint] = useState(0);
+    const [wrong, countWrong] = useState(0);
 
     const [randomCountryCode, setRandomCountryCode] = useState({
         Code: "",
@@ -29,7 +31,7 @@ function GameTemplate() {
         setRandomCountryCode(CountryCodes[Math.floor(Math.random() * 248)]);
     }, [point]);
 
-    const [time, setTime] = useState(60);
+    const [time, setTime] = useState(3);
 
     useEffect(() => {
         if (time > 0) {
@@ -42,15 +44,22 @@ function GameTemplate() {
     return (
         <>
             <GameTemplateBlock>
-                <Header time={time} point={point} />
-                <FlagTemplate
-                    countryCode={randomCountryCode.Code.toLowerCase()}
-                />
-                <UserChoiceTemplate
-                    answer={randomCountryCode.Name}
-                    point={point}
-                    setPoint={setPoint}
-                ></UserChoiceTemplate>
+                {time !== 0 ? (
+                    <>
+                        <Header time={time} point={point} wrong={wrong} />
+                        <FlagTemplate
+                            countryCode={randomCountryCode.Code.toLowerCase()}
+                        />
+                        <UserChoiceTemplate
+                            answer={randomCountryCode.Name}
+                            point={point}
+                            setPoint={setPoint}
+                            countWrong={countWrong}
+                        />
+                    </>
+                ) : (
+                    <GameResult point={point} wrong={wrong} setTime={setTime} setPoint={setPoint} setRandomCountryCode={setRandomCountryCode}/>
+                )}
             </GameTemplateBlock>
         </>
     );

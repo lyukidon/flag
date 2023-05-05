@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import React, { Component } from "react";
+import styled from "styled-components";
 
 const HeaderTemplateBlock = styled.div`
     display: flex;
@@ -10,14 +10,17 @@ const HeaderTemplateBlock = styled.div`
 
 class Header extends Component {
     render() {
-        const {point, time} = this.props;
-        
+        const { point, time, wrong } = this.props;
+
         return (
             <>
                 <HeaderTemplateBlock>
                     <span>시간: {time}</span>
                     <span>나라 국기 맞추기</span>
-                    <span>점수: {point}</span>
+                    <span>
+                        <span>틀린 횟수: {wrong}</span>
+                        <span>점수: {point}</span>
+                    </span>
                 </HeaderTemplateBlock>
             </>
         );

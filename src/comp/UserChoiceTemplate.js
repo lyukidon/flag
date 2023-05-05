@@ -14,7 +14,7 @@ const UserChoiceTemplateBlock = styled.div`
     }
 `;
 
-function UserChoiceTemplate({ answer, setPoint }) {
+function UserChoiceTemplate({ answer, setPoint, countWrong }) {
     const [options, setOptions] = useState([]);
 
     useEffect(()=>{
@@ -22,7 +22,6 @@ function UserChoiceTemplate({ answer, setPoint }) {
         const selectOptions = () => {
             if (arr.length < 4){
                 const option = CountryCodes[Math.floor(Math.random() * 248)].Name;
-                console.log(option)
                 for (let i=0;i<arr.length;i++){
                     if (arr[i] === option){
                         selectOptions();
@@ -44,7 +43,7 @@ function UserChoiceTemplate({ answer, setPoint }) {
         if (country === answer) {
             setPoint(prev => prev+1);
         } else {
-            alert("Wrong");
+            countWrong(prev => prev + 1);
         }
     };
 
