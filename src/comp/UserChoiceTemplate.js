@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { CountryCodes } from "../data/CountryCodes";
 
@@ -14,17 +14,35 @@ const UserChoiceTemplateBlock = styled.div`
     }
 `;
 
-function UserChoiceTemplate({ answer, point, setPoint }) {
-    let arr = [answer];
-    for (let i = 0; i < 3; i++) {
-        arr.push(CountryCodes[Math.floor(Math.random() * 248)].Name);
-    }
-    arr.sort((a, b) => a[1].localeCompare(b[1]));
+function UserChoiceTemplate({ answer, setPoint }) {
+    const [options, setOptions] = useState([]);
 
-    const checkUserChoice = (countryName) => {
-        console.log("click");
-        if (countryName === answer) {
-            setPoint(point++);
+    useEffect(()=>{
+        let arr=[answer]
+        const selectOptions = () => {
+            if (arr.length < 4){
+                const option = CountryCodes[Math.floor(Math.random() * 248)].Name;
+                console.log(option)
+                for (let i=0;i<arr.length;i++){
+                    if (arr[i] === option){
+                        selectOptions();
+                        break;
+                    }
+                }
+                    arr = [...arr,option]
+                selectOptions();
+            }
+        }
+        selectOptions()
+
+        arr.sort((a, b) => a[1].localeCompare(b[1]));
+
+        setOptions(arr);
+    },[answer])    
+
+    const checkUserChoice = (country) => {
+        if (country === answer) {
+            setPoint(prev => prev+1);
         } else {
             alert("Wrong");
         }
@@ -32,7 +50,7 @@ function UserChoiceTemplate({ answer, point, setPoint }) {
 
     return (
         <div>
-            {arr.map((country) => (
+            {options.map((country) => (
                 <UserChoiceTemplateBlock
                     className="example"
                     key={country}
