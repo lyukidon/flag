@@ -17,25 +17,37 @@ const GameTemplateBlock = styled.div`
     text-align: center;
 `;
 
-
 function GameTemplate() {
     const [point, setPoint] = useState(0);
-    
-    let RandomCountryCode = CountryCodes[Math.floor(Math.random() * 248)];
 
-    useEffect(()=>{
-        RandomCountryCode = CountryCodes[Math.floor(Math.random() * 248)]
-    },[point])
+    const [randomCountryCode, setRandomCountryCode] = useState({
+        Code: "",
+        Name: "",
+    });
+
+    useEffect(() => {
+        setRandomCountryCode(CountryCodes[Math.floor(Math.random() * 248)]);
+    }, [point]);
+
+    const [time, setTime] = useState(60);
+
+    useEffect(() => {
+        if (time > 0) {
+            const timer = setInterval(() => setTime((prev) => prev - 1), 1000);
+
+            return () => clearInterval(timer);
+        }
+    }, [time]);
 
     return (
         <>
             <GameTemplateBlock>
-                <Header point={point}/>
+                <Header time={time} point={point} />
                 <FlagTemplate
-                    countryCode={RandomCountryCode.Code.toLowerCase()}
+                    countryCode={randomCountryCode.Code.toLowerCase()}
                 />
                 <UserChoiceTemplate
-                    answer={RandomCountryCode.Name}
+                    answer={randomCountryCode.Name}
                     point={point}
                     setPoint={setPoint}
                 ></UserChoiceTemplate>
