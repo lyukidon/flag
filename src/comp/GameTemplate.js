@@ -29,7 +29,7 @@ function GameTemplate() {
 
     useEffect(() => {
         setRandomCountryCode(CountryCodes[Math.floor(Math.random() * 248)]);
-    }, [point]);
+    }, [point, wrong]);
 
     const [time, setTime] = useState(60);
 

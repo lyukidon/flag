@@ -44,7 +44,8 @@ export default ({ point, wrong, setTime, setPoint, setRandomCountryCode }) => {
 
     return (
         <GameTemplateBlock>
-            <div>point: {point}</div>
+            <div>Point: {point - wrong}</div>
+            <div>Correct: {point}</div>
             <div>wrong count: {wrong}</div>
             <button onClick={onClick}>restart</button>
         </GameTemplateBlock>
