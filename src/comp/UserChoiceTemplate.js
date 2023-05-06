@@ -12,6 +12,7 @@ const UserChoiceTemplateBlock = styled.div`
     &:hover {
         opacity: 1;
     }
+    font-size: 17px;
 `;
 
 function UserChoiceTemplate({ answer, setPoint, countWrong }) {
